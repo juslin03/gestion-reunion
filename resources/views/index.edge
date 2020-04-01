@@ -1,0 +1,21 @@
+@layout('layouts/auth')
+@section('content')
+<div class="login-box">
+    <div class="login-logo">
+      <a href="{{ route('/') }}"><b>Admin</b>TBC</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg">Choisir votre role avant de continuer</p>
+        <div class="form-group has-feedback">
+          <a href="{{ route('memberLogin') }}" class="btn btn-block btn-primary btn-flat">Membre utilisateur de la plateforme</a>
+            <span style="color: white" class="fa fa-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <a href="{{ route('login') }}" class="btn btn-block btn-danger btn-flat">Gestionaire de la plateforme</a>
+            <span style="color: white" class="fa fa-cogs form-control-feedback"></span>
+        </div>
+    </div>
+    <!-- /.login-box-body -->
+  </div>
+@endsection

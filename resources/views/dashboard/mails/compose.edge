@@ -1,0 +1,63 @@
+@layout('layouts/mailbox')
+@section('content')
+    <!-- /.col -->
+    <div class="col-md-9">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Nouveau Message</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="form-group">
+            <input class="form-control" placeholder="A:">
+          </div>
+          <div class="form-group">
+            <input class="form-control" placeholder="Objet:">
+          </div>
+          <div class="form-group">
+                <textarea id="compose-textarea" class="form-control" style="height: 300px">
+                  <h1><u>Entete du message</u></h1>
+                  <h4>Subheading</h4>
+                  <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
+                    was born and I will give you a complete account of the system, and expound the actual teachings
+                    of the great explorer of the truth, the master-builder of human happiness. No one rejects,
+                    dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know
+                    how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again
+                    is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain,
+                    but because occasionally circumstances occur in which toil and pain can procure him some great
+                    pleasure.</p>
+                  <ul>
+                    <li>List item one</li>
+                  </ul>
+                  <p>Thank you,</p>
+                  <p>Mister Juslin</p>
+                </textarea>
+          </div>
+          <div class="form-group">
+            <div class="btn btn-default btn-file">
+              <i class="fa fa-paperclip"></i> Attachment
+              <input type="file" name="attachment">
+            </div>
+            <p class="help-block">Max. 3MB</p>
+          </div>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          <div class="pull-right">
+            <button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Brouillon</button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Envoyer</button>
+          </div>
+          <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Annuler</button>
+        </div>
+        <!-- /.box-footer -->
+      </div>
+      <!-- /. box -->
+    </div>
+    <script>
+      $(function () {
+        //Add text editor
+        $("#compose-textarea").wysihtml5();
+      });
+    </script>
+    <!-- /.col -->
+@endsection

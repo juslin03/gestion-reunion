@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta charset="utf-8" />
+  <title>AdminTBC</title>
+
+  <!-- Template CSS -->
+  {{ style('app') }}
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  {{ script('main') }}
+
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+  @include('partials/app/flash')
+
+  <div class="wrapper">
+    <!-- Navbar -->
+    @include('partials/app/header')
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    @include('partials/app/sidebar')
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      @include('partials/app/breadcrumb')
+      <!-- /.content-header -->
+
+  <section class="content-header">
+    <h1>
+      Mes messages
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+      <li class="active">Nouveau message</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-3">
+        <a href="{{ route('/mailNew') }}" class="btn btn-primary btn-block margin-bottom">Nouveau message</a>
+
+        <div class="box box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">Dossiers</h3>
+
+            <div class="box-tools">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="active"><a href="{{ route('/mailInbox') }}"><i class="fa fa-inbox"></i> Boite de reception
+                <span class="label label-primary pull-right">12</span></a></li>
+              <li><a href="#"><i class="fa fa-envelope-o"></i> Envoyé(e)</a></li>
+              <li><a href="#"><i class="fa fa-file-text-o"></i> Brouillon(s)</a></li>
+              <li><a href="#"><i class="fa fa-filter"></i> Messages suivis <span class="label label-warning pull-right">65</span></a>
+              </li>
+              <li><a href="#"><i class="fa fa-trash-o"></i> Corbeille</a></li>
+            </ul>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /. box -->
+        <div class="box box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">sections</h3>
+
+            <div class="box-tools">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="box-body no-padding">
+            <ul class="nav nav-pills nav-stacked">
+              <li><a href="#"><i class="fa fa-circle-o text-red"></i> Important</a></li>
+            </ul>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+    <!-- Main content -->
+    @!section('content')
+    <!-- /.content -->
+    </div>
+    <!-- /.row -->
+  </section>
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!--footer -->
+    @include('partials/app/footer')
+    <div class="control-sidebar-bg"></div>
+  </div>
+  <!-- ./wrapper -->
+  <script>
+   $(function () {
+    //Add text editor
+    $('#compose-textarea').summernote()
+  })
+
+    $(function () {
+      //Enable iCheck plugin for checkboxes
+      //iCheck for checkbox and radio inputs
+      $('.mailbox-messages input[type="checkbox"]').iCheck({
+        checkboxClass: 'icheckbox_flat-blue',
+        radioClass: 'iradio_flat-blue'
+      });
+
+      //Enable check and uncheck all functionality
+      $(".checkbox-toggle").click(function () {
+        var clicks = $(this).data('clicks');
+        if (clicks) {
+          //Uncheck all checkboxes
+          $(".mailbox-messages input[type='checkbox']").iCheck("uncheck");
+          $(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
+        } else {
+          //Check all checkboxes
+          $(".mailbox-messages input[type='checkbox']").iCheck("check");
+          $(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
+        }
+        $(this).data("clicks", !clicks);
+      });
+
+      //Handle starring for glyphicon and font awesome
+      $(".mailbox-star").click(function (e) {
+        e.preventDefault();
+        //detect type
+        var $this = $(this).find("a > i");
+        var glyph = $this.hasClass("glyphicon");
+        var fa = $this.hasClass("fa");
+
+        //Switch states
+        if (glyph) {
+          $this.toggleClass("glyphicon-star");
+          $this.toggleClass("glyphicon-star-empty");
+        }
+
+        if (fa) {
+          $this.toggleClass("fa-star");
+          $this.toggleClass("fa-star-o");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

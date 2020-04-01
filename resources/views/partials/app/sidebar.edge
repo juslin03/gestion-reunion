@@ -1,0 +1,190 @@
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+      <div class="pull-left image">
+        <img src="{{ assetsUrl('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+      </div>
+      <div class="pull-left info">
+
+        @loggedIn
+        <p class="hidden-xs"> {{ auth.user.lname }}</p>
+        @endloggedIn
+        <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
+      </div>
+    </div>
+     <!-- search form -->
+     <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Chercher sur le site...">
+        <span class="input-group-btn">
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+              </button>
+            </span>
+      </div>
+    </form>
+    <!-- /.search form -->
+
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="active ">
+        <a href="{{ route('root') }}">
+          <i class="fa fa-dashboard"></i> <span>Bureau</span>
+        </a>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-envelope fw"></i>
+          <span>Messages</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{ route('/mailNew') }}"><i class="fa fa-envelope-o"></i>Nouveau message</a></li>
+          <li><a href="{{ route('/mailInbox') }}"><i class="fa fa-inbox"></i> Boite de reception</a></li>
+          <li><a href="{{ route('/mail/trash') }}"><i class="fa fa-file-text-o"></i>Brouillons</a></li>
+          <li><a href="{{ route('/mail/corbeille') }}"><i class="fa fa-trash"></i>Corbeille</a></li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-calendar fw"></i>
+          <span>Reunions</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{ route('root') }}"><i class="fa fa-info"></i>Conseils utiles</a></li>
+          <li><a href="{{ route('root') }}"><i class="fa fa-calendar-o"></i> Liste des reunions</a></li>
+          @if(auth.user.role == 'pca')
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-folder-o"></i>&nbsp;<span>Convoquer une reunion</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('/meetings/secretary') }}"><i class="fa fa-send-o"></i> Demander au secretariat</a></li>
+              <li><a href="{{ route('/meetings/programm') }}"><i class="fa fa-calendar-o"></i>&nbsp;La convoquer moi-même</a></li>
+            </ul>
+          </li>
+          @endif
+
+          @if(auth.user.role == 'secretary')
+          <li class="">
+            <a href="{{ route('root') }}">
+              <span class="label label-info">2</span>&nbsp;<span>nouvelles autorisation(s)</span>
+            </a>
+          </li>
+          @endif
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-handshake-o fw"></i>
+          <span>Conseil d'administration</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{ route('root') }}"><i class="fa fa-info"></i>Conseils utiles</a></li>
+          <li><a href="{{ route('cadAdd') }}"><i class="fa fa-plus"></i>&nbsp;Ajouter un membre</a></li>
+          <li><a href="{{ route('cadUsers') }}"><i class="fa fa-handshake-o"></i>&nbsp;Tous les membres</a></li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-bookmark"></i>&nbsp;Les textes du conseils
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('/cad/rules') }}"><i class="fa fa-file-o"></i>&nbsp;Règlement intérieur</a></li>
+              <li><a href="{{ route('/cad/code') }}"><i class="fa fa-file-o"></i>&nbsp;Code de conduite</a></li>
+              <li><a href="{{ route('/cad/code') }}"><i class="fa fa-file-o"></i>&nbsp;Les textes généraux</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-handshake-o fw"></i>
+          <span>Les comités</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          @if(auth.user.role == 'admin')
+          <li><a href="{{ route('comiteAdd') }}"><i class="fa fa-plus"></i>&nbsp;Ajouter un comité</a></li>
+          @endif
+          <li><a href="{{ route('comiteAll') }}"><i class="fa fa-object-group"></i>&nbsp;Tous les comité</a></li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-users fw"></i>
+          <span>Assemblée générale</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{ route('root') }}"><i class="fa fa-info"></i>Conseils utiles</a></li>
+          @if(auth.user.role == 'pca')
+            <li><a href="{{ route('agAdd') }}"><i class="fa fa-plus"></i>&nbsp;Programmer une AG</a></li>
+          @endif
+          <li><a href="{{ route('agAll') }}"><i class="fa fa-users"></i>&nbsp;Tous les AG</a></li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-bookmark"></i>&nbsp;Les textes des AG
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ route('/ag/texts') }}"><i class="fa fa-file-o"></i>&nbsp;Les textes</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+    @if(auth.user.role == 'admin')
+    <li class="treeview">
+      <a href="">
+        <i class="fa fa-users"></i>
+        <span>Utilisateurs</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="{{ route('userManage') }}"><i class="fa fa-users"></i>Tous les utilisateurs</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="{{ route('systemConfig') }}">
+        <i class="fa fa-cogs"></i> <span>Configuration du système</span>
+      </a>
+    </li>
+     @endif
+
+    <li>
+      <a href="{{ route('profile') }}">
+        <i class="fa fa-user"></i> <span>Mon compte</span>
+      </a>
+    </li>
+
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,31 @@
+@layout('layouts/auth')
+@section('content')
+<div class="register-box">
+  <div class="register-logo">
+    <a href="../../index2.html"><b>Admin</b>TBC</a>
+  </div>
+
+  <div class="register-box-body">
+    <p class="login-box-msg">Mot de passe oublié</p>
+
+    <form  method="POST" action="{{ route('auth.forgot') }}">
+      {{ csrfField() }}
+
+      <div class="form-group has-feedback">
+        <input type="email" class="form-control" name="t_user_email" placeholder="Votre adresse Email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-danger btn-block btn-flat mt-2">Réinitialiser</button>
+
+        </div>
+
+      </div>
+    </form>
+    <a class="mt-2" href="{{ route('login') }}">Retour vers connexion</a><br>
+
+  </div>
+  <!-- /.form-box -->
+</div>
+@endsection
