@@ -1,17 +1,3 @@
-# Adonis AdminLTE
-
-This repo is an implementation of a starter pack for Adonis v.4.x with some tweaks.
-It is just an example of how you can implement front-end stuff and authentication.
-
-## What's inside?
-
-- Sqlite as a DB layer
-- Auth controller (login, logout)
-- Auth emails (welcome email, reset password email)
-- Auth validators
-- Webpack v4.x default config
-- LESS + ES6+
-- Folder structure for views
 
 ## Details
 - `webpack` configured to compile three stylesheets and scripts for `application`, `manage` and `auth` section of the app
