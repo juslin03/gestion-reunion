@@ -19,7 +19,7 @@ class Handler {
     }
 
     if (error.name === 'InvalidSessionException') {
-      response.redirect('/choice');
+      response.redirect('/login');
       return;
     }
     if (error.code === 'E_ROUTE_NOT_FOUND') {
@@ -27,9 +27,14 @@ class Handler {
       return;
     }
     if (error.name === 'InvalidLoginException' || error.name === 'InvalidSessionException' || error.code === 'EBADCSRFTOKEN') {
-      response.redirect('/choice');
+      response.redirect('/login');
       return;
     }
+
+    // if (error.name === 'InvalidArgumentException') {
+    //   response.redirect('back');
+    //   return;
+    // }
 
     response.status(error.status).send(error.message);
 

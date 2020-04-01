@@ -32,7 +32,7 @@ class AuthController {
       return response.redirect("back");
     }
 
-    const math_password = await Hash.verify(password, user.password);
+   const math_password = await Hash.verify(password, user.password);
 
     if (!math_password) {
       session.flash({
@@ -40,6 +40,13 @@ class AuthController {
       });
       return response.redirect("back");
     }
+    // try {
+    //     await auth.attempt(email, password);
+    //     return response.redirect('/');
+    // } catch (error) {
+    //     session.flash({loginError: 'These credentials do not work.'})
+    //     return response.redirect('/login');
+    // }
 
     try {
       await auth.login(user);
@@ -177,7 +184,7 @@ class AuthController {
       flash_info: "Vous êtes maintenant déconnecté !"
     });
     await auth.logout();
-    return response.route("choice");
+    return response.route("login");
   }
 }
 

@@ -20,12 +20,13 @@ class UserSeeder {
   async run () {
     const user = await Database.from('users').insert([
       {
+        uid: uuid(),
         fname: 'Admin',
         lname: 'admin',
         gender: 'M',
         email: 'komenan.komenan@uvci.edu.ci',
         tel_code: '+225',
-        tel: '59842878',
+        tel: '59-84-28-78',
         birthdate: '1998-12-20',
         birthplace: 'Famienkro S/P Prikro',
         group: 'CONSEIL D\'ADMINISTRATION',

@@ -42,10 +42,6 @@ Route.on("/choice")
   .render("index")
   .as("choice")
   .middleware(["authenticated"]);
-Route.on("/memberLogin")
-  .render("auth.memberLogin")
-  .as("memberLogin")
-  .middleware(["authenticated"]);
 
 Route.get("/logout", "AuthController.logout").as("logout");
 Route.get("/not_found", "ErrorController.index").as("not_found");
@@ -55,9 +51,6 @@ Route.group(() => {
   Route.post("/login", "AuthController.login")
     .as("auth.login")
     .validator("auth/Login");
-  Route.post("/memberLogin", "User/MemberController.memberLogin")
-    .as("auth.memberLogin")
-    .validator("auth/MemberLogin");
   Route.post("/resend", "AuthController.resend")
     .as("auth.resend")
     .validator("auth/Resend");
@@ -91,18 +84,22 @@ Route.on("/mailRead")
 Route.group(() => {
   Route.get("/manage", "User/UserController.manage").as("userManage");
   Route.get("/add", "User/MemberController.add").as("userAdd");
-  Route.post("/newAdd", "User/MemberController.newAdd")
+  Route.post("/newAdd", "User/UserController.newAdd")
     .as("newAdd")
     .validator("User/Add");
   Route.get("/edit/:id", "User/UserController.edit").as("userEdit");
   Route.post("/edit/:id", "User/UserController.edit")
     .as("userEdit")
     .validator("User/Edit");
+  Route.delete("/:id/delete", "User/UserController.delete").as("userDelete");
 })
   .prefix("user")
   .middleware("auth");
 
-// Meetings bloc
+Route.on("/profile")
+  .render("User.profile")
+  .as("profile");
+
 
 // create meeting
 Route.get("/meetings", "Meeting/MeetingController.index")

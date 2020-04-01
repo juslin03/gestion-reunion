@@ -35,12 +35,12 @@ class User extends Model {
     return this.hasMany('App/Models/Token')
   }
 
-  /**
-   * @method member
+   /**
+    * method member
    */
-    member() {
-      return this.hasMany('App/Models/Member')
-   }
+  //   member() {
+  //     return this.hasMany('App/Models/Member')
+  //  }
 }
 
 module.exports = User

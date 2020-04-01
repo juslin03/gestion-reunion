@@ -4,7 +4,14 @@
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>TBC</b></span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b>Admin</b>TBC</span>
+    <span class="logo-lg">
+      @if(auth.user.role != 'admin')
+        <b>Membre</b>
+      @else
+        <b>Admin</b>
+      @endif
+      TBC
+    </span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top">
@@ -131,7 +138,7 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a href="" class="btn btn-default btn-flat"><i class="fa fa-user"></i>&nbsp;Mon compte</a>
+                <a href="{{ route('profile') }}" class="btn btn-default btn-flat"><i class="fa fa-user"></i>&nbsp;Mon compte</a>
               </div>
               <div class="pull-right">
                 <a href="{{ route('logout') }}" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i>&nbsp;Déconnexion</a>

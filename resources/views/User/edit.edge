@@ -1,123 +1,180 @@
 @layout('layouts/app')
 @section('content')
-<form action="{{route('userEdit', { id: user.id })}}" id="user-edit-form" method="post" enctype="multipart/form-data">
-  {{ csrfField() }}
-  <section class="content">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="box box-primary">
-          <div class="box-header">
-          </div>
-          <div class="box-body">
-            <div class="row">
-              <div class="col-xs-6">
-                <div class="form-group">
-                  <label>ID</label>
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="fa fa-user"></i>
-                    </div>
-                    <input type="text" class="form-control" readonly value="{{user.id}}">
-                  </div>
-                  <!-- /.input group -->
-                </div>
-                <div class="form-group">
-                  <label>Prénom(s)</label>
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="fa  fa-info"></i>
-                    </div>
-                    <input type="text" name="fname" class="form-control" value="{{user.fname}}">
-                  </div>
-                  <!-- /.input group -->
-                </div>
-                <div class="form-group">
-                  <label>Nom</label>
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="fa  fa-info"></i>
-                    </div>
-                    <input type="text" name="lname" class="form-control" value="{{user.lname}}">
-                  </div>
-                  <!-- /.input group -->
-                </div>
-              </div>
-              <div class="col-xs-6">
-                <!-- Date dd/mm/yyyy -->
-                <div class="form-group">
-                  <label>Email</label>
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="fa fa-envelope"></i>
-                    </div>
-                    <input type="text" class="form-control" value="{{user.email}}" readonly>
-                  </div>
-                  <!-- /.input group -->
-                </div>
-                <!-- /.form group -->
 
+ <!-- Main content -->
+ <section class="content">
 
+  <div class="row">
+    <div class="col-md-3">
 
-                @if(phoneCode)
+      <!-- Profile Image -->
+      <div class="box box-primary">
+        <div class="box-body box-profile">
+          <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
 
-                <!-- Date mm/dd/yyyy -->
-                <div class="form-group">
-                  <label>N° téléphone
-                  </label>
-                  <div class="row">
-                    <div class="col-xs-5">
-                      <select name="tel_code" class="form-control select2" style="width: 100%;" disabled>
-                        @each( item in phoneCode )
-                        <option {{item.dial_code ==user.tel_code?'selected':''}} value="{{item.dial_code}}">
-                          ({{item.dial_code}}) {{item.name}}</option>
-                        @endeach
+          <h3 class="profile-username text-center">
+            {{ user.fname + " " + user.lname }}
+          </h3>
 
-                      </select>
-                    </div>
-                    <div class="col-xs-7">
-                      <input type="text" class="form-control" name="tel" readonly data-inputmask='"mask": "99-99-99-99"' data-mask value="{{user.tel}}">
-                    </div>
-                  </div>
-                  <!-- /.input group -->
-                </div>
-                <!-- /.form group -->
-                @endif
+          <p class="text-muted text-center">{{ user.post }}</p>
 
-                <div class="form-group">
-                  <label>Ville actuelle</label>
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="fa fa-envelope"></i>
-                    </div>
-                    <input type="text" class="form-control" value="{{user.city}}" name="city">
-                  </div>
-                  <!-- /.input group -->
-                </div>
-                <!-- /.form group -->
-
-              </div>
-            </div>
-          </div>
-          <div class="box-footer">
-            <!-- tools box -->
-            <div class="pull-right box-tools">
-              <button type="submit" class="btn btn-block btn-success btn-flat">
-                <i class="fa fa-save"></i>
-                Enrégister</button>
-            </div>
-            <!-- /. tools -->
-          </div>
+          <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+              <b>Abonnés</b> <a class="pull-right">50</a>
+            </li>
+          </ul>
         </div>
+        <!-- /.box-body -->
       </div>
+      <!-- /.box -->
+
+      <!-- About Me Box -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">A propos de {{ user.lname }}</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+
+          <p class="text-muted">
+            B.S. in Computer Science from the University of Tennessee at Knoxville
+          </p>
+
+          <hr>
+
+          <strong><i class="fa fa-map-marker margin-r-5"></i> Lieu d'habitation</strong>
+
+          <p class="text-muted">{{user.city}}, {{user.country}}</p>
+
+          <hr>
+
+          <strong><i class="fa fa-pencil margin-r-5"></i> Compétences</strong>
+
+          <p>
+            <span class="label label-danger">UI Design</span>
+            <span class="label label-success">Coding</span>
+            <span class="label label-info">Javascript</span>
+            <span class="label label-warning">PHP</span>
+            <span class="label label-primary">Node.js</span>
+          </p>
+
+          <hr>
+
+          <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
     </div>
-  </section>
-  <form>
+    <!-- /.col -->
+    <div class="col-md-9">
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#settings" data-toggle="tab">Paramètres</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="active tab-pane" id="settings">
+            <form action="{{route('userEdit', { id: user.id })}}" class="form-horizontal" id="user-edit-form" method="post" enctype="multipart/form-data">
+              {{ csrfField() }}
+              <div class="form-group">
+                <label for="userId" class="col-sm-2 control-label">SS Key</label>
+                <div class="col-sm-10">
+                  <input type="text" name="" id="userId" class="form-control" readonly value="{{user.uid}}" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputName" class="col-sm-2 control-label">Nom</label>
+                <div class="col-sm-10">
+                  <input type="text" name="fname" id="inputName" class="form-control" value="{{user.fname}}" placeholder="Le nom">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputlName" class="col-sm-2 control-label">Prénom(s)</label>
+                <div class="col-sm-10">
+                  <input type="text" name="lname" id="inputlName" class="form-control" value="{{user.lname}}" placeholder="Le prenom">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="inputEmail" readonly value="{{user.email}}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputTel" class="col-sm-2 control-label">Téléphone</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputTel" readonly value="{{ user.tel_code + ' ' + user.tel }}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputExperience" class="col-sm-2 control-label">Biographie</label>
+
+                <div class="col-sm-10">
+                  <textarea class="form-control" id="inputExperience" placeholder="La biographie"></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="city" class="col-sm-2 control-label">Ville actuelle</label>
+
+                <div class="col-sm-10">
+                  <input type="text" id="city" class="form-control" value="{{user.city}}" name="city" placeholder="La ville actuelle">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <div class="checkbox">
+                    <label>
+                      <input required type="checkbox"> Voulez-vous modifier cet utilisateur ?
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-block btn-success btn-flat">
+                    <i class="fa fa-save"></i>
+                    Enrégister</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- /.tab-pane -->
+        </div>
+        <!-- /.tab-content -->
+      </div>
+      <!-- /.nav-tabs-custom -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+
+
+
+</section>
+<!-- /.content -->
+
+ <!-- Control Sidebar -->
+ <aside class="control-sidebar control-sidebar-dark">
+  <!-- Create the tabs -->
+  <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+    <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+    <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+  </ul>
+
+</aside>
+<!-- /.control-sidebar -->
+
     <script>
       $(function () {
-    // $.userManage.getPhoneCode();
-       //Initialize Select2 Elements
        $('.select2').select2()
-  });
-
+      });
     </script>
     @endsection

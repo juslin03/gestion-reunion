@@ -31,6 +31,7 @@
             <tbody>
               @if(users)
               @each( user in users )
+              @if(user.role == 'admin')
               <tr>
                 <td>{{user.email}}</td>
                 <td>{{user.fname}}</td>
@@ -39,12 +40,13 @@
                 <td>{{user.updated_at}}</td>
                 <td class="text-center">
                   <a href="{{route('userEdit', { id: user.id })}}" class="btn btn-info btn-flat"><i
-                      class="fa  fa-pencil"></i></a>
+                      class="fa fa-pencil"></i></a>
                   @if(auth.user.role != 'admin')
-                  <a class="btn btn-danger btn-flat"><i class="fa  fa-remove"></i></a>
+                  <a href="" class="btn btn-danger btn-flat"><i class="fa fa-remove"></i></a>
                   @endif
                 </td>
               </tr>
+              @endif
               @endeach
               @endif
             </tbody>
@@ -78,22 +80,22 @@
               </tr>
             </thead>
             <tbody>
-              @if(members)
-              @each( member in members )
+              @if(users)
+              @each( user in users )
+              @if(user.role != 'admin')
               <tr>
-                <td>{{member.email}}</td>
-                <td>{{member.fname}}</td>
-                <td>({{member.tel_code}}) {{member.tel}}</td>
-                <td>{{member.role}}</td>
-                <td>{{member.updated_at}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.fname}}</td>
+                <td>({{user.tel_code}}) {{user.tel}}</td>
+                <td>{{user.role}}</td>
+                <td>{{user.updated_at}}</td>
                 <td class="text-center">
-                  <a href="{{route('memberEdit', { id: member.id })}}" class="btn btn-info btn-flat"><i
-                      class="fa  fa-pencil"></i></a>
-                  @if(auth.member.role != 'admin')
-                  <a class="btn btn-danger btn-flat"><i class="fa  fa-remove"></i></a>
-                  @endif
+                  <a href="{{route('userEdit', { id: user.id })}}" class="btn btn-info btn-flat"><i
+                      class="fa fa-pencil"></i></a>
+                  <a href="{{route('userDelete', { id: user.id })}}" class="btn btn-danger btn-flat"><i class="fa fa-remove"></i></a>
                 </td>
               </tr>
+              @endif
               @endeach
               @endif
             </tbody>
