@@ -83,7 +83,7 @@ Route.on("/mailRead")
 
 Route.group(() => {
   Route.get("/manage", "User/UserController.manage").as("userManage");
-  Route.get("/add", "User/MemberController.add").as("userAdd");
+  Route.get("/add", "User/UserController.addForm").as("userAdd");
   Route.post("/newAdd", "User/UserController.newAdd")
     .as("newAdd")
     .validator("User/Add");
@@ -103,5 +103,5 @@ Route.on("/profile")
 
 // create meeting
 Route.get("/meetings", "Meeting/MeetingController.index")
-  .as("meetingCreateForm")
+  .as("meetingCreate")
   .middleware("auth");

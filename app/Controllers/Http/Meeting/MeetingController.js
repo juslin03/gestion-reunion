@@ -1,5 +1,5 @@
 'use strict'
-
+let BaseController = require("../BaseController");
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -7,7 +7,7 @@
 /**
  * Resourceful controller for interacting with meetings
  */
-class MeetingController {
+class MeetingController extends BaseController {
   /**
    * get meeting create form
    */

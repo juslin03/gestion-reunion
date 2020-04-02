@@ -43,6 +43,28 @@ class UserController extends BaseController {
     });
   }
 
+   async addForm({ view }) {
+    var breadcrumb = [
+      {
+        name: "Accueil",
+        url: Route.url("/"),
+        icon: "fa-dashboard",
+        class: ""
+      },
+      {
+        name: "Nouvel utilisateur",
+        url: "javascript:void(0)",
+        icon: "",
+        class: "active"
+      }
+    ];
+    view.share({
+      title: "Nouvel utilisateur",
+      breadcrumb: breadcrumb
+    });
+    return view.render("User.add");
+  }
+
 async newAdd({ request, session, response }) {
     // create member
     const user = await User.create({
@@ -105,9 +127,10 @@ async newAdd({ request, session, response }) {
     // charger l'id de l'utilisateur
     let user = await this._validateData(params.id);
     if (request.method() == "POST") {
-      const data = request.only(["fname", "lname", "city"]);
+      const data = request.only(["fname", "lname", "role", "city"]);
       user.fname = data.fname;
       user.lname = data.lname;
+      user.role = data.role;
       user.city = data.city;
       try {
         await user.save();
