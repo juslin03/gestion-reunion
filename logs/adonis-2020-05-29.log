@@ -1,0 +1,12 @@
+{ level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-05-29T13:38:25.695Z' }
+{ level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-05-29T13:40:20.309Z' }
+{ level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-05-29T13:41:38.926Z' }
+{ level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-05-29T13:54:35.136Z' }

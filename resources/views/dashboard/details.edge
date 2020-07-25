@@ -1,0 +1,65 @@
+@layout('layouts/app')
+@section('content')
+
+<!-- Info boxes -->
+ <div class="row">
+    <div class="col-12 col-sm-6 col-md-3">
+      <div class="info-box">
+        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-calendar"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">avril, 10</span>
+          <small class="info-box-number">
+          2020
+          </small>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+
+    <!-- fix for small devices only -->
+    <div class="clearfix hidden-md-up"></div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+      <div class="info-box mb-3">
+        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-desktop"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Lieu (En ligne)</span>
+          <small class="info-box-number"><span class="text-xs" style="font-weight:normal">Outil: <a href="https://zoom.us" title="Cliquer pour accéder en direct"></span>Zoom</small></a>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+      <div class="info-box mb-3">
+        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Participants attendus</span>
+          <small class="info-box-number">0 participants | <a href="#view" data-whatever="@mdo" data-toggle="modal" data-target="#view" title="Voir tous les participants de la reunion">Voir</a>
+          </small>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+     <!-- /.col -->
+     <div class="col-12 col-sm-6 col-md-3">
+      <form action="" novalidate method="POST">
+        <button type="submit" name="confirm" class="btn mb-1 elevation-2 bg-success">
+        <div class="info-box-content">
+          <span class="info-box-text text-center">Confirmer sa participation</span>
+        </div>
+        </button>
+        </form>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+  @endsection

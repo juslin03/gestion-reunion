@@ -36,11 +36,11 @@ class User extends Model {
   }
 
    /**
-    * method member
+    * method Meeting
    */
-  //   member() {
-  //     return this.hasMany('App/Models/Member')
-  //  }
+    meeting() {
+      return this.hasMany('App/Models/Meeting')
+   }
 }
 
 module.exports = User

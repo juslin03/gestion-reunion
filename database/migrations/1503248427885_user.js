@@ -28,7 +28,7 @@ class UserSchema extends Schema {
       table.integer('term_duration', 60).notNullable()
       table.string('password', 60).notNullable()
       table.string('compagny_init', 254).notNullable()
-      table.string('reset_token')
+      // table.string('reset_token')
       table.datetime('last_login')
       table.timestamps()
     })

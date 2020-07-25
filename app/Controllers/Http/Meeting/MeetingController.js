@@ -1,9 +1,9 @@
 'use strict'
 let BaseController = require("../BaseController");
-/** @typedef {import('@adonisjs/framework/src/Request')} Request */
-/** @typedef {import('@adonisjs/framework/src/Response')} Response */
-/** @typedef {import('@adonisjs/framework/src/View')} View */
-
+const Meeting = use("App/Models/Meeting");
+const uuid = use('uuid/v1');
+const Logger = use("Logger");
+const Hash = use("Hash");
 /**
  * Resourceful controller for interacting with meetings
  */
@@ -36,6 +36,29 @@ class MeetingController extends BaseController {
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
+    // create meeting
+    const meeting = await Meeting.create({
+      m_uid: uuid(),
+      user_id: 1,
+      m_type: request.input("m_type"),
+      m_subject: request.input("m_subject"),
+      m_desc: request.input("m_desc"),
+      m_date: request.input("m_date"),
+      m_from: request.input("m_from"),
+      m_to: request.input("m_to"),
+      m_duration: request.input("m_duration"),
+      m_convocation: request.input("m_convocation"),
+      m_ordre: request.input("m_ordre")
+    });
+    try {
+      await meeting.save()
+    } catch (error) {
+      Logger.error(error.message())
+    }
+    session.flash({
+      flash_info: "Reunion créé avec succès !"
+    });
+    return response.redirect("back");
   }
 
   /**
@@ -47,7 +70,36 @@ class MeetingController extends BaseController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
+  async showMeeting ({ params, request, response, view }) {
+    var params = request.params;
+    if (!params || !params.uid) {
+      response.redirect("not_found");
+    }
+
+    // charger l'id de la reunion
+    let meeting = await this._validateData(params.uid);
+
+    if (meeting) {
+      return view.render('dashboard.meetings.details', {
+        uid: meeting.rows
+      })
+    }
+  }
+
+
+  async _validateData(uid) {
+    if (!uid) {
+      throw new Error("Id non valide");
+    }
+    let meeting = await Meeting.query()
+      .where("uid", "=", uid)
+      .first();
+    // return meetings;
+
+    if (!meeting || !meeting.uid) {
+      throw new Error("Reunion inexistante");
+    }
+    return meeting;
   }
 
   /**

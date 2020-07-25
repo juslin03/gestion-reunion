@@ -62,7 +62,11 @@ class UserController extends BaseController {
       title: "Nouvel utilisateur",
       breadcrumb: breadcrumb
     });
-    return view.render("User.add");
+    // afficher code pays
+    var phoneCode = await this.phoneCode();
+    return view.render('User.add', {
+      phoneCode: phoneCode
+    });
   }
 
 async newAdd({ request, session, response }) {

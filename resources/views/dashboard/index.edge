@@ -14,9 +14,32 @@
         <div class="icon">
           <i class="ion ion-bag"></i>
         </div>
-        <a href="{{ route('meetingsDetails') }}" class="small-box-footer">Details <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="#participer" class="small-box-footer" data-toggle="modal" data-target="#participer">Participer à la reunion <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{ route('meetingDetails', { uid: meeting.uid }) }}" class="small-box-footer">Details <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
   </div>
-  <!-- /.row -->
+
+  <div class="modal fade" id="participer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<form action="" method="POST" novalidate>
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+				<div class="modal-header">
+					<h6 class="modal-title text-center" id="exampleModalLabel">VOULEZ-VOUS PARTICIPER A CETTE REUNION ?</h6>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<button type="submit" class="btn btn-success" name="conf_reunion">Confirmer ma participation</button>
+					<button type="submit" class="btn btn-danger" name="pouvoir_conf">Me faire representer</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Retour</button>
+				</div>
+				</div>
+			</div>
+		</form>
+		</div>  <!-- /.row -->
 @endsection

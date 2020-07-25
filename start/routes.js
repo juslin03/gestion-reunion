@@ -102,6 +102,10 @@ Route.on("/profile")
 
 
 // create meeting
-Route.get("/meetings", "Meeting/MeetingController.index")
-  .as("meetingCreate")
-  .middleware("auth");
+
+  Route.group(() => {
+    Route.get("/meetings", "Meeting/MeetingController.index").as("meetingCreate");
+    Route.post("/meetings/create", "Meeting/MeetingController.store").as("meetingStore").validator("Meeting/Create");
+  })
+    .prefix("meet")
+    .middleware("auth");

@@ -7,6 +7,8 @@ class MeetingSchema extends Schema {
   up () {
     this.create('meetings', (table) => {
       table.increments()
+      table.string('uid').notNullable()
+      table.integer('user_id').unsigned().references('id').inTable('users')
       table.string('m_type', 50).notNullable()
       table.string('m_subject', 50).notNullable()
       table.string('m_desc', 255).notNullable()
@@ -14,8 +16,8 @@ class MeetingSchema extends Schema {
       table.date('m_date').notNullable()
       table.time('m_from').notNullable()
       table.time('m_to').notNullable()
-      table.string('m_passowrd', 6).notNullable()
-      table.string('m_key',10).unique()
+      table.longtext("m_convocation").notNullable()
+      table.longtext("m_ordre").notNullable()
       table.timestamps()
     })
   }

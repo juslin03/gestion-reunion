@@ -1,0 +1,105 @@
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T14:52:17.670Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T14:54:22.150Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:00:41.947Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:03:19.783Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:06:50.606Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:08:50.739Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:08:53.533Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:09:08.127Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:09:11.662Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:09:33.243Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:09:34.328Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:09:37.003Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:16:06.793Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:17:25.659Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:17:30.435Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:18:41.015Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:18:44.370Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:18:48.619Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:19:02.922Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:19:07.401Z'
+}
+{
+  level: 'info',
+  message: 'serving app on http://127.0.0.1:3333',
+  timestamp: '2020-07-25T15:21:04.098Z'
+}
